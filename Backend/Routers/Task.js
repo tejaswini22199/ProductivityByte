@@ -3,52 +3,52 @@ import expressAsyncHandler from 'express-async-handler';
 import Task from '../Schemas/TaskModel.js';
 import data from '../data.js';
 
-const  Task= express.Router();
+const  Task1= express.Router();
 
 //database seed
-Task.get('/seed', expressAsyncHandler(async (req, res) => {
-    await Task.remove({});
-    const createdTasks = Task.insertMany(data.tasks);
+Task1.get('/seed', expressAsyncHandler(async (req, res) => {
+    await Task1.remove({});
+    const createdTasks = Task1.insertMany(data.tasks);
     res.send({createdTasks});
 }));
 
-Task.get('/', expressAsyncHandler(async (req, res) => {
-    const tasks = await Task.find({});
+Task1.get('/', expressAsyncHandler(async (req, res) => {
+    const tasks = await Task1.find({});
     res.send({tasks});
 }));
 
-Task.get('/importanceDescending', expressAsyncHandler(async (req, res) => {
-    const tasks = await Task.find().sort({ "priority": -1 });
+// Task1.get('/importanceDescending', expressAsyncHandler(async (req, res) => {
+//     const tasks = await Task1.find().sort({ "priority": -1 });
+//     res.send({ tasks });
+// }));
+
+Task1.get('/importanceAscending', expressAsyncHandler(async (req, res) => {
+    const tasks = await Task1.find().sort({ "priority": 1 });
     res.send({ tasks });
 }));
 
-Task.get('/importanceAscending', expressAsyncHandler(async (req, res) => {
-    const tasks = await Task.find().sort({ "priority": 1 });
+Task1.get('/dateDescending', expressAsyncHandler(async (req, res) => {
+    const tasks = await Task1.find().sort({ "date": 1 });
     res.send({ tasks });
 }));
 
-Task.get('/dateDescending', expressAsyncHandler(async (req, res) => {
-    const tasks = await Task.find().sort({ "date": 1 });
+Task1.get('/dateAscending', expressAsyncHandler(async (req, res) => {
+    const tasks = await Task1.find().sort({ "date": -1 });
     res.send({ tasks });
 }));
 
-Task.get('/dateAscending', expressAsyncHandler(async (req, res) => {
-    const tasks = await Task.find().sort({ "date": -1 });
-    res.send({ tasks });
-}));
-
-Task.get('/typeAlphabetical', expressAsyncHandler(async (req, res) => {
-    const tasks = await Task.find().sort({ "type": 1 });
+Task1.get('/typeAlphabetical', expressAsyncHandler(async (req, res) => {
+    const tasks = await Task1.find().sort({ "type": 1 });
     res.send({ tasks });
 }))
 
-Task.get('/:id', expressAsyncHandler(async (req, res) => {
-    const task = await Task.findById(req.params.id);
+Task1.get('/:id', expressAsyncHandler(async (req, res) => {
+    const task = await Task1.findById(req.params.id);
     res.send({task});
 }))
 
-Task.post('/', expressAsyncHandler(async (req, res) => {
-    const task = new Task({
+Task1.post('/', expressAsyncHandler(async (req, res) => {
+    const task = new Task1({
         name: req.body.name,
         type: req.body.type,
         description: req.body.description,
@@ -60,8 +60,8 @@ Task.post('/', expressAsyncHandler(async (req, res) => {
     res.send("Task Created successfully" );
 }))
 
-Task.put('/update', expressAsyncHandler(async (req, res) => {
-    const task = await Task.findById(req.body._id);
+Task1.put('/update', expressAsyncHandler(async (req, res) => {
+    const task = await Task1.findById(req.body._id);
     if (task) {
         task.isComplete = req.body.isComplete;
         const updatedTask = await task.save();
@@ -69,8 +69,8 @@ Task.put('/update', expressAsyncHandler(async (req, res) => {
     } 
 }))
 
-Task.put('/edit', expressAsyncHandler(async (req, res) => {
-    const task = await Task.findById(req.body._id);
+Task1.put('/edit', expressAsyncHandler(async (req, res) => {
+    const task = await Task1.findById(req.body._id);
     if (task) {
         task.name = req.body.name || task.name;
         task.type = req.body.type || task.type;
@@ -83,8 +83,8 @@ Task.put('/edit', expressAsyncHandler(async (req, res) => {
     }
 }))
 
-Task.delete('/delete', expressAsyncHandler(async (req, res) => {
-    const task = await Task.findById(req.body._id);
+Task1.delete('/delete', expressAsyncHandler(async (req, res) => {
+    const task = await Task1.findById(req.body._id);
     if (task) {
         const deleteTask = await task.remove();
         res.send("task deleted");

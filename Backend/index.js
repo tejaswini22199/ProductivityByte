@@ -6,18 +6,24 @@ import Task from './Routers/Task.js';
 
 const app = express();
 
-app.use(express.static(path.join(path.resolve(), '/frontend/build')));
+// app.use(express.static(path.join(path.resolve(), '../frontend/build')));
 
 app.use(express.json()); // parse http requests
 app.use(express.urlencoded({ extended: true }));
-
-mongoose.connect('', {
+const PORT=5000;
+mongoose.connect('mongodb+srv://${process.env.USERNAME}:${process.env.password}@cluster0.poemd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-});
+})
+.then(()=>app.listen(PORT,()=>{
+    console.log(`server running at port ${PORT}`);
+}))
+.catch((error)=>{
+    console.log("error occured");
+})
 
-app.use('/api/users', User);
+ app.use('/api/users', User);
 app.use('/api/tasks', Task);
 
 app.get("*", (req, res) => {
@@ -32,3 +38,4 @@ const port = 5000;
 app.listen(process.env.PORT || port, () => {
     console.log(`server started on https://localhost:${port}`);
 })
+mongoose.set('useFindAndModify',false);

@@ -4,7 +4,7 @@ import '../CSS/card.css'
 import Axios from 'axios';
 import { Button } from '@material-ui/core';
 import {Animated} from 'react-animated-css'
-
+import '../App.css'
 
 export default function HomeScreen() {
 
@@ -56,16 +56,16 @@ export default function HomeScreen() {
     return (
         <div>
             <Animated>
-                <h1>Hello! Here is your to do list</h1>
+                <h1 className="center_heading container">Hello! Welcome to Productivity Byte Track your work progress and make your to-do list</h1>
             </Animated>
             <Animated animationIn="flipInX">
                 <div>
                     Sort by:
                     <div className="buttons-container">
-                        <Button variant="contained" color="primary" onClick={() => setQueryState(0)}>Most Important</Button>
+                        <Button variant="contained" color="secondary" onClick={() => setQueryState(0)}>Most Important</Button>
                         <Button variant="contained" color="secondary" onClick={() => setQueryState(3)}>Upcoming</Button>
                         <Button variant="contained" color="secondary" onClick={() => setQueryState(1)}>Least Important</Button>
-                        <Button variant="contained" color="primary" onClick={() => setQueryState(2)}>Type</Button>
+                        <Button variant="contained" color="secondary" onClick={() => setQueryState(2)}>Type</Button>
                        
                         
                     </div>

@@ -11,19 +11,20 @@ import CreateTask from './Components/CreateTask'
 import EditTask from './Components/EditTask'
 // import TaskCalendarScreen from './screens/TaskCalendarScreen';
 // import EditTaskScreen from './screens/EditTaskScreen';
-
+import menu from './Assets/menu.png'
+import { Menu } from '@material-ui/core';
 
 function App() {
-  const [open, setOpen] = useState(false)
+  const [showNavbar, setshowNavbar] = useState(false)
   return (
     <BrowserRouter>
       <div className="App">
         <header>
-          {/* <div className={open ? "viewport-icon" : "viewport-180deg"} >
-            <img src="./images/arrow.svg" alt="menu" onClick={(e) => setOpen(!open)}></img>
-          </div> */}
-          <div>
-            <Navbar open={open} setOpen={setOpen} onClick={(e) => setOpen(!open)}></Navbar>
+          <div className={showNavbar ? "viewport-icon" : "viewport-180deg"} >
+            <img src={menu} alt="menu" onClick={(e) => setshowNavbar(!showNavbar)}></img>
+          </div>
+          <div className="container">
+            <Navbar showNavbar={showNavbar} setshowNavbar={setshowNavbar} onClick={(e) => setshowNavbar(!showNavbar)}></Navbar>
           </div>
         </header>
         <main>
