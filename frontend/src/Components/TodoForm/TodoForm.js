@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
-import '../CSS/formStyles.css'
+import '../../CSS/formStyles.css'
 import Axios from 'axios';
-import useStyles from './styles';
+import useStyles from './Todostyles';
 export default function TodoForm() {
     const [formData,setformData]=useState({
         name:'',
@@ -14,12 +14,7 @@ export default function TodoForm() {
 
     });
     const classes = useStyles();
-    // const [name, setName] = useState('');
-    // const [desc, setDesc] = useState('');
-    // const [type, setType] = useState('');
-    // const [date, setDate] = useState();
-    // const [priority, setPriority] = useState(25);
-    // const isComplete = false;
+    
 
     const parseDate = (e) => {
         const tmpDate = new Date(e);
@@ -29,8 +24,13 @@ export default function TodoForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-      //  console.log(res);
-        Axios.post('/api/tasks', {...formData})
+        // console.log(e);
+        Axios.post('/api/tasks', {...formData},{headers:
+             {
+            'Access-Control-Allow-Origin': '*',
+            'Cache-Control': 'no-cache',
+          }
+        },)
             .then(res => {
                 console.log(res);
                 console.log(res.data);

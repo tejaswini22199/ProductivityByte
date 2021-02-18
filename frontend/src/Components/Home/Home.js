@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import TodoItem from './TodoItem';
-import '../CSS/card.css'
+import TodoItem from '../TodoItem';
+import '../../CSS/card.css'
 import Axios from 'axios';
 import {Toolbar, AppBar,Button, Typography,Container } from '@material-ui/core';
 import {Animated} from 'react-animated-css'
-import '../App.css'
-import Homestyle from './Homestyle'
-export default function HomeScreen() {
+import '../../App.css'
+import styles from './styles'
+export default function Home() {
 
     const [loading, setLoading] = useState(true);
     const [tasks, setTasks] = useState([]);
     const [query, setQuery] = useState(0);
-    const classes=Homestyle();
+    const classes=styles();
     useEffect(() => {
         switch (query) {
             case 0:

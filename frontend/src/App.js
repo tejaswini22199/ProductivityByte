@@ -3,9 +3,9 @@ import {BrowserRouter, Route, Link} from 'react-router-dom'
 // import HomeScreen from './screens/Home';
 // import LoginScreen from './screens/LoginScreen';
 // import RegisterScreen from './screens/RegisterScreen';
-import Home from './Components/Home'
+import Home from './Components/Home/Home'
 import { useState } from 'react';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import './CSS/nav.css'
 import CreateTask from './Components/CreateTask'
 import EditTask from './Components/EditTask'
@@ -43,4 +43,3 @@ function App() {
 }
 
 export default App;
-// © 2021 GitHub, Inc.

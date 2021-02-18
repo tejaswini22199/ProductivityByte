@@ -15,14 +15,7 @@ const data = {
             isComplete: false,
             date: "2021-02-14T12:00",
         },
-        {
-            name: "Chill out",
-            type: "Misc task",
-            description: "Enjoy a nice break over reading week",
-            priority: 27,
-            isComplete: false,
-            date: "2021-02-14T12:00Z",
-        }
+        
     ],
 }
 
