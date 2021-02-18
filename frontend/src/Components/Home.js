@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react'
 import TodoItem from './TodoItem';
 import '../CSS/card.css'
 import Axios from 'axios';
-import { Button } from '@material-ui/core';
+import {Toolbar, AppBar,Button, Typography,Container } from '@material-ui/core';
 import {Animated} from 'react-animated-css'
 import '../App.css'
-
+import Homestyle from './Homestyle'
 export default function HomeScreen() {
 
     const [loading, setLoading] = useState(true);
     const [tasks, setTasks] = useState([]);
     const [query, setQuery] = useState(0);
-
+    const classes=Homestyle();
     useEffect(() => {
         switch (query) {
             case 0:
@@ -55,22 +55,27 @@ export default function HomeScreen() {
 
     return (
         <div>
-            <Animated>
-                <h1 className="center_heading container">Hello! Welcome to Productivity Byte Track your work progress and make your to-do list</h1>
-            </Animated>
-            <Animated animationIn="flipInX">
-                <div>
+            
+           
+            <AppBar className={classes.heading} position="static">
+            <Toolbar>
+            <Typography className={classes.headingcontent} variant="h4" align="center">
+            Hello! Welcome to Productivity Byte
+            </Typography>
+            {/* <Button color="inherit">Login</Button> */}
+            </Toolbar>
+            </AppBar>
+
+                <Container>
                     Sort by:
                     <div className="buttons-container">
                         <Button variant="contained" color="secondary" onClick={() => setQueryState(0)}>Most Important</Button>
                         <Button variant="contained" color="secondary" onClick={() => setQueryState(3)}>Upcoming</Button>
                         <Button variant="contained" color="secondary" onClick={() => setQueryState(1)}>Least Important</Button>
-                        <Button variant="contained" color="secondary" onClick={() => setQueryState(2)}>Type</Button>
-                       
-                        
+                        <Button variant="contained" color="secondary" onClick={() => setQueryState(2)}>Type</Button> 
                     </div>
-                </div>
-            </Animated>
+                </Container>
+               
             <Animated animationIn="fadeInUp">
                 <div className="card-container">
                     {!loading &&

@@ -10,7 +10,7 @@ import './CSS/nav.css'
 import CreateTask from './Components/CreateTask'
 import EditTask from './Components/EditTask'
 // import TaskCalendarScreen from './screens/TaskCalendarScreen';
-// import EditTaskScreen from './screens/EditTaskScreen';
+import EditTaskScreen from './Components/EditTaskScreen';
 import menu from './Assets/menu.png'
 import { Menu } from '@material-ui/core';
 
@@ -33,7 +33,7 @@ function App() {
           <Route path="/register" component={RegisterScreen} /> */}
           <Route path="/create" component={CreateTask} />
           {/* <Route path="/tasks/monthly" component={TaskCalendarScreen} /> */}
-          <Route path='/tasks/:id/edit' component={EditTask} />
+          <Route path='/tasks/:id/edit' component={EditTaskScreen} />
           <Navbar/>
         </main>
       </div>

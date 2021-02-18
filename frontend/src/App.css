@@ -1,9 +1,10 @@
-.App {
-  background-color:rgb(72, 173, 240);
-}
+
 .center-heading{
   display: flex;
   justify-content: center;
   align-items: center;
   
+}
+.headingmain{
+  margin-bottom:30px;
 }
